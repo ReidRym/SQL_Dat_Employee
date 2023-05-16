@@ -48,7 +48,34 @@ When choosing to update an employee role, you will be prompted to select an empl
 MIT
 
 ## Features  
-show images and video here
+Follow to link video here:
+
+https://drive.google.com/file/d/17ObzJNSc6cofV5QN5NORANdHn0vYAnnn/view
+
+Image 1
+
+![1sql](https://github.com/ReidRym/SQL_Dat_Employee/assets/123789106/239de81e-2230-4afd-a441-ff3a124e0376)
+
+Image 2
+
+![2sql](https://github.com/ReidRym/SQL_Dat_Employee/assets/123789106/3e03fd5f-2619-4f54-869f-89a8092a05c7)
+
+Image 3
+
+![3sql](https://github.com/ReidRym/SQL_Dat_Employee/assets/123789106/274c826b-2789-4a97-a01c-05e9880f648b)
+
+Image 4
+
+![4sql](https://github.com/ReidRym/SQL_Dat_Employee/assets/123789106/732cb1d5-9cc3-4a82-b815-efe6d82b0923)
+
+Image 5
+
+![5sql](https://github.com/ReidRym/SQL_Dat_Employee/assets/123789106/2da0e2ec-2197-498c-8cbb-2833ecdc7923)
+
+Image 6
+
+![6sql](https://github.com/ReidRym/SQL_Dat_Employee/assets/123789106/e751f58b-1343-409e-ba71-6eb39a82c1e5)
+
 
 
 
