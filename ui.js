@@ -100,7 +100,7 @@ function viewRoles() {
               );
             });
           }
-          
+          // need to query the department table in order to grab all the departments and then use that to populate the choices for the department_id
           function addRole() {
             connection.query("SELECT * FROM department", function (err, res) {
               if (err) throw err;
@@ -124,11 +124,11 @@ function viewRoles() {
                 }
               ]).then(function (answers) {
                 const selectedDept = res.find(dept => dept.name === answers.deptId);
-                connection.query("INSERT INTO roles SET ?",
+                connection.query("INSERT INTO role SET ?",
                   {
                     title: answers.title,
                     salary: answers.salary,
-                    dept_id: selectedDept.id
+                    department_id: selectedDept.id
                   },
                   function (err, res) {
                     if (err) throw err;
@@ -139,9 +139,9 @@ function viewRoles() {
               });
             })
           };
-
+// Have to query role table in order to grab all the roles and then use that to populate the choices for the role_id
           function addEmployee() {
-            connection.query("SELECT * FROM roles", function (err, res) {
+            connection.query("SELECT * FROM role", function (err, res) {
               if (err) throw err;
               //asking for the three properties on the roles table      
               inquirer.prompt([
@@ -178,18 +178,13 @@ function viewRoles() {
               });
             })
           };
-
+         
           function updateEmp() {
-            connection.query("SELECT * FROM employee", function (err, res) {
+            connection.query("SELECT * FROM role", function (err, res) {
               if (err) throw err;
               //asking for the three properties on the roles table      
               inquirer.prompt([
-                {
-                  name: "employee",
-                  type: "list",
-                  message: "Which employee would you like to update?",
-                  choices: res.map(item => item.first_name)
-                },
+               
                 {
                   name: "newRole",
                   type: "list",
@@ -198,22 +193,32 @@ function viewRoles() {
                 }
               ]).then(function (answers) {
                 const selectedRole = res.find(role => role.title === answers.newRole);
-                connection.query("UPDATE employee SET ? WHERE ?",
-                  {
-                    role_id: selectedRole.id
-                  },
-                  {
-                    first_name: answers.employee
-                  },
-                  function (err, res) {
-                    if (err) throw err;
-                    console.log("Employee updated!\n");
-                    initPrompt();
-                  }
-                );
+
+                connection.query("SELECT * FROM employee", function (err, res) {
+              if (err) throw err;
+              inquirer.prompt([
+                {
+                  name: "employee",
+                  type: "list",
+                  message: "Which employee would you like to update?",
+                  choices: res.map(item => item.first_name)
+                },
+
+              ]).then(function (answers) {
+const selectedEmp = res.find(emp => emp.first_name === answers.employee);
+connection.query("UPDATE employee SET role_id= ? WHERE id= ?",
+[selectedRole.id, selectedEmp.id]),
+
+  console.log("Employee updated!\n");
+  initPrompt();
+
               });
-            })
-          }
+              });
+            
+                });
+               
+              });
+            }
 
 
 
